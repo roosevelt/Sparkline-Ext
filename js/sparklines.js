@@ -18,14 +18,12 @@ vcanvas.prototype = {
 		this.canvas.style.width = width;
 		this.canvas.style.height = height;
 		this.canvas.style.verticalAlign = 'top';
-		this._insert(this.canvas, target);
-		this.pixel_height = $(this.canvas).height();
-		this.pixel_width = $(this.canvas).width();
+		this.pixel_height = parseInt(this.canvas.style.height);
+		this.pixel_width = parseInt(this.canvas.style.width);
 		this.canvas.width = this.pixel_width;
 		this.canvas.height = this.pixel_height;
 		this.canvas.style.width = this.pixel_width;
 		this.canvas.style.height = this.pixel_height;
-		
 	},
 
 	_getContext : function(lineColor, fillColor, lineWidth) {
@@ -90,12 +88,7 @@ vcanvas.prototype = {
 
 	getElement : function() {
 		return this.canvas;
-	},
-
-	_insert : function(el, target) {
-		$(target).html(el);
 	}
-
 };
 
 
@@ -298,6 +291,7 @@ SparkLines = Ext.extend(Ext.BoxComponent, {
 			this.line(this.uservalues, width, height);
 		}
 	}
+	
 });
 
 
@@ -305,13 +299,12 @@ SparkLines = Ext.extend(Ext.BoxComponent, {
 
 Ext.onReady(function(){
 
-	var s = new SparkLines({
-		values: [1,4,6,6,8,5,3,5],
+	new SparkLines({
+		values: [1.9,2.0,2.2,4,6,6,8,5,3,5,5,5,5,5,5,5,9],
 		type: 'line', 	
-		height: 100,
-		width: 100,
+		height: 500,
+		width: 500,
+		lineWidth: 1,
 		renderTo:'sparkline'	
 	});
-
-
 });
